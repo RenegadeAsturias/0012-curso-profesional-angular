@@ -9,11 +9,11 @@ $ ng serve -o
 
 
 git add .
-git commit -m "Añadimos un README.txt con la descripción del proyecto"
+git commit -m "Curso Profesional de Angular (Código Facilito) (19/04/2023). Inicio"
 
 --Crear el repositorio en GitHub
 git remote add origin https://github.com/RenegadeAsturias/0012-curso-profesional-angular.git
-git push origin master
+git push origin main
 
 
 
