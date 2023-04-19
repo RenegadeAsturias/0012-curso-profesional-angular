@@ -15,5 +15,12 @@ git commit -m "Curso Profesional de Angular (Código Facilito) (19/04/2023). Ini
 git remote add origin https://github.com/RenegadeAsturias/0012-curso-profesional-angular.git
 git push origin main
 
+$ ng g c pipes
+
+Documentación de pipes:
+https://angular.io/guide/pipes
+https://angular.io/api/common/DatePipe
+
+$ ng g pipe pipes/estados
 
 

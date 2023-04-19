@@ -1,1 +1,28 @@
-<p>directiva-atributo works!</p>
+<p [ngClass]="{'info':true}">Mensaje importante</p>
+<p [ngClass]="{'info':messageType}">Mensaje importante</p>
+<p [ngClass]="{'info':messageType==='info'}">Mensaje importante</p>
+
+<p [ngClass]="{'info':messageTypeNum===1}">Mensaje importante</p>
+<p [ngClass]="{'info':messageTypeNum===1, 'error':messageTypeNum!==1}">Mensaje importante</p>
+
+
+<p [ngStyle]="{'color':messageTypeNum===1 ? 'green' : 'red'}">Mensaje no tan importante </p>
+
+
+<!-- Por defecto, muestra error: Can't bind to '[(ngModel' since it isn't a known property of 'input' -->
+<!-- En app.module.ts hay que añadir : FormsModule:
+  @NgModule({
+  declarations: [
+    AppComponent,
+    DirectivaAtributoComponent,
+    DirectivaEstructuralComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ... ... ...
+-->
+
+<input type="text" [(ngModel)]="inputValue" />
+
+<br/>Valor actual del input {{inputValue}}<br/><!-- Interpolación -->

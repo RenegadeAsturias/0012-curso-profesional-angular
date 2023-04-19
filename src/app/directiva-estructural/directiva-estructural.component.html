@@ -1,1 +1,33 @@
-<p>directiva-estructural works!</p>
+<div *ngIf="isError" class="error">
+  Mensaje de error: Algo salió mal :(
+</div>
+
+<button (click)="showError()">Mostrar error</button>
+
+<h2>Secciones</h2>
+<ul>
+  <li *ngFor="let seccion of secciones">{{seccion}}</li>
+</ul>
+
+<hr>
+<h2>Secciones avanzadas</h2>
+<ul>
+  <li *ngFor="let seccionAvanzada of seccionesAvanzadas">{{seccionAvanzada.name}} ({{seccionAvanzada.duracion}})</li>
+</ul>
+
+<hr>
+Utilizando: ng-template:<br/>
+<ng-template #noDisponible>
+  Contenido no disponible
+</ng-template>
+
+<br/>
+Mi 'ng-template' se renderiza cuando alguien lo llama, por ejemplo:
+<ng-container *ngTemplateOutlet="noDisponible"></ng-container>
+
+<!-- Podemos añadirle lógica Javascript al 'ng-templete', por ejemplo: -->
+
+<div *ngIf="isError">
+  <br/>Podemos añadirle lógica Javascript al 'ng-templete', por ejemplo:
+  <br/><ng-container *ngTemplateOutlet="isError ? noDisponible : null"></ng-container>
+</div>
