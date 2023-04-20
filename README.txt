@@ -2,6 +2,8 @@
 Curso Profesional de Angular (Código Facilito) (19/04/2023)
 
 $ ng new 0012-curso-profesional-angular
+
+***************************************** COMPONENTES:
 $ cd 0012-curso-profesional-angular
 $ ng g c directiva-atributo
 $ ng g c directiva-estructural
@@ -15,6 +17,7 @@ git commit -m "Curso Profesional de Angular (Código Facilito) (19/04/2023). Ini
 git remote add origin https://github.com/RenegadeAsturias/0012-curso-profesional-angular.git
 git push origin main
 
+***************************************** PIPES:
 $ ng g c pipes
 
 Documentación de pipes:
@@ -22,5 +25,121 @@ https://angular.io/guide/pipes
 https://angular.io/api/common/DatePipe
 
 $ ng g pipe pipes/estados
+
+
+***************************************** RUTAS:
+(1) ¿Qué son los módulos?
+Agrupación de componentes por funcionalidad.
+
+(2) Rutas
+(3) Rutas con hijos
+(4) Guards
+(5) Aplicando lazy loading en rutas
+
+$ ng g m compra
+
+#¡Ojo! Para que me añada los nuevos componentes
+#al módulo 'compra' (ej:UPDATE src/app/compra/compra.module.ts)
+$ cd src/app/compra
+
+$ ng g c listado
+CREATE src/app/compra/listado/listado.component.html (22 bytes)
+CREATE src/app/compra/listado/listado.component.spec.ts (606 bytes)
+CREATE src/app/compra/listado/listado.component.ts (206 bytes)
+CREATE src/app/compra/listado/listado.component.css (0 bytes)
+UPDATE src/app/compra/compra.module.ts (278 bytes)
+
+$ ng g c nuevaCompra
+$ ng g c historialCompra
+
+@NgModule({
+  declarations: [
+    ListadoComponent, ************** Componente 'listado' actualizado
+    NuevaCompraComponent, ********** Componente 'nuevaCompra' actualizado
+    HistorialCompraComponent ******* Componente 'historialCompra' actualizado
+  ],
+  imports: [
+    CommonModule
+  ]
+})
+export class CompraModule { }
+
+
+************************************************************
+#Ahora quiero utilizar uno de mis nuevos componentes del módulo 'compra'
+#Y en 'app.component.html' añado el selector: 'app-listado',
+
+<h1>Listado de Compras</h1>
+<app-listado></app-listado>
+
+#Pero el compilador me da error
+'app-listado' is not a known element:
+1. If 'app-listado' is an Angular component, then verify that it is part of this module.
+
+#Aún no puedo utilizar el módulo 'compra' tengo que registrarlo en:
+scr > app > app.module.ts
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    DirectivaAtributoComponent,
+    DirectivaEstructuralComponent,
+    PipesComponent,
+    EstadosPipe
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    CompraModule ******************* Módulo 'compra' registrado
+  ],
+... ... ... ...
+
+#El error persiste:
+'app-listado' is not a known element:
+1. If 'app-listado' is an Angular component, then verify that it is part of this module.
+
+#Los Componentes están registrados en el módulo 'compra'
+#pero son propios de este módulo y por defecto
+#otros módulos no pueden utilizarlos como en este caso
+#porque puede ser que en realidad queramos eso, que nuestros componentes
+#sólo deben ser vistos por un componente y no sean vistos por el resto de módulos.
+#Para solucionarlo, en el módulo 'compra' hay que exportar
+#los componentes que pueden ser vistos por otros módulos:
+
+@NgModule({
+  declarations: [
+    ListadoComponent,
+    NuevaCompraComponent,
+    HistorialCompraComponent
+  ],
+  exports: [
+    ListadoComponent  ********* Exportar los componentes
+                      ********* visibles para otros módulos
+  ],
+  imports: [
+    CommonModule
+  ]
+})
+export class CompraModule { }
+
+#Ahora ya funciona correctamente la llamada al componente:
+<h1>Listado de Compras</h1>
+<app-listado></app-listado>
+√ Compiled successfully.
+
+
+#Entonces como el componente del módulo 'compra': NuevaCompraComponent
+#no ha sido exportado no podría hacer:
+src > app > app.component.html
+<h1>Nueva Compra</h1>
+<app-nueva-compra></app-nueva-compra>
+
+#Pero si podría utilizarlo dentro de los componentes
+#correspondientes al módulo 'compra'.
+#Esto funciona:
+src > app > compra > listado > listado.component.html
+<h1>Nueva Compra</h1>
+<app-nueva-compra></app-nueva-compra>
 
 

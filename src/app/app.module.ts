@@ -7,18 +7,22 @@ import { DirectivaAtributoComponent } from './directiva-atributo/directiva-atrib
 import { DirectivaEstructuralComponent } from './directiva-estructural/directiva-estructural.component';
 import { FormsModule } from '@angular/forms';
 import { PipesComponent } from './pipes/pipes.component';
+import { EstadosPipe } from './pipes/estados.pipe';
+import { CompraModule } from './compra/compra.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     DirectivaAtributoComponent,
     DirectivaEstructuralComponent,
-    PipesComponent
+    PipesComponent,
+    EstadosPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CompraModule
   ],
   providers: [],
   bootstrap: [AppComponent]
