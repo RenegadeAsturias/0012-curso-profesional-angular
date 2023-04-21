@@ -142,4 +142,64 @@ src > app > compra > listado > listado.component.html
 <h1>Nueva Compra</h1>
 <app-nueva-compra></app-nueva-compra>
 
+******************************************************************
+
+Creamos un nuevo módulo que va a trabajar con la ruta de nuestro proyecto:
+$ ng g m AppRouting
+CREATE src/app/app-routing/app-routing.module.ts
+
+Como yo ya había creado el proyecto y le dije que habilitase Routing Y
+ya tengo creado el módulo para las rutas en:
+
+src > app > app-routing.module.ts
+
+Tendremos esto:
+
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+------------------------------------------------------------
+
+#Añadimos las rutas en:
+const routes: Routes = [
+    {path: 'pipes', PipesComponent: }
+];
+
+Para que funcione, tecleamos en la url del navegador
+http://localhost:4200/pipes
+
+Pero aún no se muestra nada, nos vamos:
+
+src > app > app.component.hml
+
+Comentamos todo lo que teníamos y añadimos:
+
+<router-outlet></router-outlet>
+
+ahora volvemos a escribir:
+src > app > app.component.hml
+
+Y ya vemos el contenido de nuestro componente:
+scr > app > pipes > pipes.component.html
+desplegado en el contenedor:
+<router-outlet></router-outlet>
+
+Pipe titlecase: René
+Pipe upppercase: RENÉ
+Pipe date: Feb 20, 2020
+
+
+
+
+
+
+
 
