@@ -196,6 +196,46 @@ Pipe titlecase: René
 Pipe upppercase: RENÉ
 Pipe date: Feb 20, 2020
 
+------------------------------------------------------------
+
+#Añadimos otra ruta en:
+const routes: Routes = [
+  {path: 'pipes', component: PipesComponent},
+  {path: 'estructural', component: DirectivaEstructuralComponent}
+];
+
+Para que funcione, tecleamos en la url del navegador
+http://localhost:4200/esctructural
+
+------------------------------------------------------------
+
+Vamos a implementar un botón para ir
+desde la página de Pipes para ir a Estructural:
+
+<button [routerLink]="['/estructural']">Ir a Componente Estructural</button>
+
+Y ahora añadimos otro nuevo botón
+y vemos el atributo: routerLinkActive
+que nos ayuda a identificar la ruta activa
+y le asociamos un estilo para que se identifique que estamos en ella.
+
+<button [routerLink]="['/estructural']" routerLinkActive="seccionActiva">Ir a Componente Estructural</button>
+<button [routerLink]="['/pipes']" routerLinkActive="seccionActiva">Ir a Componente Estructural</button>
+
+------------------------------------------------------------
+
+Cambimos de lugar los botones de cambios de rutas para que nos sirvan
+en modo navegación, en:
+
+src > app > app.component.html
+
+<button [routerLink]="['/estructural']" routerLinkActive="seccionActiva">Ir a Componente Estructural</button>
+<button [routerLink]="['/pipes']" routerLinkActive="seccionActiva">Ir a Componente Estructural</button>
+<router-outlet></router-outlet>
+
+------------------------------------------------------------
+
+
 
 
 
