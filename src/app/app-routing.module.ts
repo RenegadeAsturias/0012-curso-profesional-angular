@@ -7,6 +7,7 @@ import { NuevaCompraComponent } from './compra/nueva-compra/nueva-compra.compone
 import { HistorialCompraComponent } from './compra/historial-compra/historial-compra.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'pipes', pathMatch: 'full' },
   {path: 'pipes', component: PipesComponent},
   {path: 'estructural', component: DirectivaEstructuralComponent},
 	{ path: 'compra', component: ListadoComponent, children: [
