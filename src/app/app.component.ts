@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = '0012-curso-profesional-angular';
+
+	constructor() { // Simulamos el Id del usuario.
+		localStorage.setItem('id', '9999');
+	}
+
 }
